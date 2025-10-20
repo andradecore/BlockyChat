@@ -1,0 +1,6 @@
+name: BlockyChat
+main: com.blockycraft.blockychat.BlockyChat
+version: 1.1.0
+author: Bernardo Zukerman
+description: Chat customizado integrado ao BlockyFactions e com funcionalidade de greentext.
+depend: [BlockyFactions]
