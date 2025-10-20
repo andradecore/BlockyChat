@@ -1,9 +1,0 @@
-chat-colors:
-  # Cor para o nome do jogador e os colchetes que envolvem a tag da faccao.
-  player-name: '&f'
-
-  # Cor para o texto da tag da faccao.
-  faction-tag: '&b'
-  
-  # Cor padrao para a mensagem do chat.
-  message: '&7'
