@@ -35,10 +35,10 @@
         
         <dependency>
             <groupId>com.blockycraft</groupId>
-            <artifactId>BlockyFactions</artifactId>
+            <artifactId>BlockyGroups</artifactId>
             <version>1.0.0</version>
             <scope>system</scope>
-            <systemPath>${minecraft.server.path}/plugins/BlockyFactions.jar</systemPath>
+            <systemPath>${minecraft.server.path}/plugins/BlockyGroups.jar</systemPath>
         </dependency>
         </dependencies>
 

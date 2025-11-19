@@ -1,6 +1,6 @@
 package com.blockycraft.blockychat;
 
-import com.blockycraft.blockyfactions.api.BlockyFactionsAPI;
+import com.blockycraft.blockygroups.api.BlockyGroupsAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,7 +13,7 @@ import java.io.File;
 public class BlockyChat extends JavaPlugin implements Listener {
 
     private String colorPlayerName;
-    private String colorFactionTag;
+    private String colorGroupTag;
     private String colorMessage;
 
     @Override
@@ -21,7 +21,7 @@ public class BlockyChat extends JavaPlugin implements Listener {
         loadConfiguration();
         getServer().getPluginManager().registerEvents(this, this);
         System.out.println("[BlockyChat] Plugin ativado com sucesso!");
-        System.out.println("[BlockyChat] Integracao com BlockyFactions pronta.");
+        System.out.println("[BlockyChat] Integracao com BlockyGroups pronta.");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class BlockyChat extends JavaPlugin implements Listener {
         if (!configFile.exists()) {
             System.out.println("[BlockyChat] Criando config.yml padrao...");
             config.setProperty("chat-colors.player-name", "&f");
-            config.setProperty("chat-colors.faction-tag", "&b");
+            config.setProperty("chat-colors.group-tag", "&b");
             config.setProperty("chat-colors.message", "&7");
             config.save();
         }
@@ -44,7 +44,7 @@ public class BlockyChat extends JavaPlugin implements Listener {
         config.load();
 
         this.colorPlayerName = ChatColor.translateAlternateColorCodes('&', config.getString("chat-colors.player-name", "&f"));
-        this.colorFactionTag = ChatColor.translateAlternateColorCodes('&', config.getString("chat-colors.faction-tag", "&b"));
+        this.colorGroupTag = ChatColor.translateAlternateColorCodes('&', config.getString("chat-colors.group-tag", "&b"));
         this.colorMessage = ChatColor.translateAlternateColorCodes('&', config.getString("chat-colors.message", "&7"));
     }
 
@@ -72,11 +72,11 @@ public class BlockyChat extends JavaPlugin implements Listener {
         event.setMessage(message);
 
         // Lógica de formatação com as cores do config.yml
-        String factionTag = BlockyFactionsAPI.getPlayerFactionTag(player.getName());
+        String groupTag = BlockyGroupsAPI.getPlayerGroupTag(player.getName());
 
         String format;
-        if (factionTag != null) {
-            String prefix = this.colorPlayerName + "%1$s [" + this.colorFactionTag + factionTag + this.colorPlayerName + "]: ";
+        if (groupTag != null) {
+            String prefix = this.colorPlayerName + "%1$s [" + this.colorGroupTag + groupTag + this.colorPlayerName + "]: ";
             format = prefix + finalMessageColor + "%2$s";
         } else {
             String prefix = this.colorPlayerName + "%1$s: ";
